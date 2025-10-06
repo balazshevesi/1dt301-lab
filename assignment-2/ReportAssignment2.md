@@ -41,7 +41,7 @@ We followed the following conventions:
 
 In our programs we keep counters/state in `r4`/`r5`, which safely survive calls like `sleep_ms` or `link_gpio_*` per convention. We pass parameters in `r0`, `r1`, etc., and receive results in `r0`.
 
-## [Task 1 —“Hello World](./task1.S)
+## [Task 1 -“Hello World](./task1.S)
 
 We adapted the book example to print "Hello World %d\n" while counting 100 to 0 and then resetting back to 100 in an infinite loop. On each iteration set `r0` to the format string, `r1` to the current counter, and call printf. When `r7` hits 0 we reset it. 
 
@@ -53,15 +53,15 @@ Key points visible in the code:
 
 - USB stdio enabled in the build, viewable via minicom.
 
-## [Task 2 — Traffic light](./task2.S)
+## [Task 2 - Traffic light](./task2.S)
 
 We configured GP0–GP2 as outputs and toggled them sequentially with 1s delays to emulate a traffic light. Each pin is initialized via `gpio_init`, direction set via `link_gpio_set_dir(pin, 1)`, then driven high/low via `link_gpio_put(pin, value)` with `sleep_ms`(1000) between phases.
 
-## [Task 3 — 3-bit binary counter](./task3.S)
+## [Task 3 - 3-bit binary counter](./task3.S)
 
 We use masked writes to update three pins in one call: `link_gpio_put_masked(LED_MASK, value)`, where `LED_MASK = (1<<0)|(1<<1)|(1<<2)`. State (`r5`) tracks direction (up/down), counter (`r4`) holds the current 0–7 value. We sleep 1s between steps. On reaching 7 we flip to down; on 0 we flip to up. 
 
-## [Task 4 — 7-segment counter](./task4.S)
+## [Task 4 - 7-segment counter](./task4.S)
 
 We initialize GP0–GP6 as outputs, map the current digit (in `r4`) to a 7-segment bitmap via `encode_digit_to_segments`, then write all bits at once with `link_gpio_put_all(v)`. We maintain the same up/down state machine and 1s delay. 
 
@@ -75,4 +75,4 @@ Details:
 
 ## Conclusion
 
-All four tasks were implemented purely in assembly and verified on hardware/serial. The code adheres to ARM calling conventions.
+All four tasks were implemented purely in assembly and verified on the hardware. The code adheres to ARM calling conventions.
