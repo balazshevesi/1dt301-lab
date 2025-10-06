@@ -18,21 +18,23 @@
 
 main:
     movs r0,#0
+    movs r6, #0
 
-1:  bl  gpio_init           @ define all pins as output
-    movs r1,#GPIO_OUT
-    mov  r0,r0
-    bl  link_gpio_set_dir
-    adds r0,r0,#1
-    cmp  r0,#7
-    bne 1b
+1:  movs r0, r6
+    bl   gpio_init
+
+    movs r0, r6
+    movs r1, #GPIO_OUT
+    bl   link_gpio_set_dir
+
+    adds r6, r6, #1      @ increment pin
+    cmp  r6, #7
+    bne  1b
 
     movs r4, #0         @ r4 = this is our actual counter value, from 0 to 9, starts at 0
     movs r5, #0         @ r5 = this is our "state", tells us wether we're counting up or down, 0 = counting up, 1 = counting down
 
 loop:
-
-
     bl  encode_digit_to_segments
     bl  link_gpio_put_all
 
