@@ -1,4 +1,6 @@
-# 1DT301 Lab Assignment REPORT
+READ ON GITHUB: [https://github.com/balazshevesi/1dt301-lab-assignment-2/blob/main/assignment-2/ReportAssignment2.md](https://github.com/balazshevesi/1dt301-lab-assignment-2/blob/main/assignment-2/ReportAssignment2.md)
+
+# [1DT301 Lab Assignment REPORT](https://github.com/balazshevesi/1dt301-lab-assignment-2/blob/main/assignment-2/ReportAssignment2.md)
 
 This lab introduced bare-metal ARMv6-M assembly on the Raspberry Pi Pico (RP2040). We implemented four tasks entirely in Thumb assembly, used the SDK only via thin C “link” functions, and verified behavior over USB serial and on GPIO pins with LEDs and a 7-segment display.
 
